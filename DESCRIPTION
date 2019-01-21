@@ -5,6 +5,7 @@ Authors@R: person("Yu", "Zhu", email = "ross.zhu@outlook.com", role = c("aut", "
 Description: My personal data processing helpers
 Depends: 
 	R (>= 3.3.0),
+	devtools,
 	data.table,
 	ggplot2,
 	dplyr,
