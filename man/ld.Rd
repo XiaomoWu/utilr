@@ -4,14 +4,14 @@
 \alias{ld}
 \title{A simplified load function.}
 \usage{
-ld(x, force = F, current.dir = F)
+ld(x, folder = "Rdata", force = F)
 }
 \arguments{
 \item{x}{The object to be loaded.}
 
-\item{force}{Whether the object should be reloaded if it's already in the current environment.}
+\item{folder}{To which subfolder the data is saved. If '.', save to current directory.}
 
-\item{current.dir}{If True, load from current folder; otherwise, load from subdirectory 'Rdata'}
+\item{force}{Whether the object should be reloaded if it's already in the current environment.}
 }
 \description{
 A simplified load function.

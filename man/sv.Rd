@@ -4,14 +4,14 @@
 \alias{sv}
 \title{A simplified save function.}
 \usage{
-sv(x, compress = T, current.dir = F)
+sv(x, folder = "Rdata", compress = T)
 }
 \arguments{
 \item{x}{The object to be saved}
 
 \item{compress}{Whether the object should be compressed}
 
-\item{current.dir}{If True, save to current folder; otherwise, create subdirectory 'Rdata'}
+\item{folder.}{To which subfolder the data is saved. If '.', save to current directory.}
 }
 \description{
 A simplified save function.

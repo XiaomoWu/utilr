@@ -6,6 +6,7 @@ Description: My personal data processing helpers
 Depends: 
 	R (>= 3.3.0),
 	devtools,
+	roxygen2,
 	data.table,
 	ggplot2,
 	dplyr,
