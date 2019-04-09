@@ -4,7 +4,7 @@
 #' @param x The object to be saved
 #' @param compress Whether the object should be compressed
 #' @param folder. To which subfolder the data is saved. If '.', save to current directory. 
-sv <- function(x, folder = "Rdata", compress = T) {
+sv <- function(x, folder = "../Rdata", compress = T) {
     start <- Sys.time()
 
     # if folder not exists, create one
@@ -35,7 +35,7 @@ sv <- function(x, folder = "Rdata", compress = T) {
 #' @param x The object to be loaded.
 #' @param force Whether the object should be reloaded if it's already in the current environment.
 #' @param folder To which subfolder the data is saved. If '.', save to current directory. 
-ld <- function(x, folder = 'Rdata', force = F) {
+ld <- function(x, folder = '../Rdata', force = F) {
     start <- Sys.time()
 
     # create load dir
