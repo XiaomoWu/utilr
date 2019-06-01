@@ -4,7 +4,7 @@
 \alias{sv}
 \title{A simplified save function.}
 \usage{
-sv(x, folder = "Rdata", compress = T)
+sv(x, path = "../Rdata", compress = T)
 }
 \arguments{
 \item{x}{The object to be saved}
