@@ -1,12 +1,12 @@
 # - create a template
-# create("C:/Users/u1211862/OneDrive/App/R/utilr")
+
+create("C:/Users/u1211862/OneDrive/App/R/utilr")
 
 # - put all .R files into the R folder
 
 # - generate document 
 
-library(stringr)
-setwd(str_c(Sys.getenv("OneDrive"), "\\App\\R"))
+setwd(stringr::str_c(Sys.getenv("OneDrive"), "\\App\\R"))
 devtools::document('utilr')
 
 # - push to github!

@@ -2,9 +2,9 @@
 % Please edit documentation in R/io.R
 \name{sv}
 \alias{sv}
-\title{A simplified save function.}
+\title{A simplified save function using saveRDS().}
 \usage{
-sv(x, path = "../Rdata", compress = T)
+sv(x, path = "../data", compress = T)
 }
 \arguments{
 \item{x}{The object to be saved}
@@ -14,5 +14,5 @@ sv(x, path = "../Rdata", compress = T)
 \item{folder.}{To which subfolder the data is saved. If '.', save to current directory.}
 }
 \description{
-A simplified save function.
+A simplified save function using saveRDS().
 }
