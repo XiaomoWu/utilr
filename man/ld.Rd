@@ -4,15 +4,21 @@
 \alias{ld}
 \title{A simplified load function using readRDS().}
 \usage{
-ld(x, path = "../data", force = F)
+ld(filename, objname = NULL, path = "./data", force = F)
 }
 \arguments{
-\item{x}{The object to be loaded.}
+\item{filename}{expression or char. The file name to be loaded, e.g. ld(x) equals to load(file='dt.rds')}
+
+\item{objname}{expression or char. The object name in R. If NULL then equals to filename}
+
+\item{path}{From which subfolder to read the data. Default to '../data'. If './', load from current directory.}
 
 \item{force}{Whether the object should be reloaded if it's already in the current environment.}
-
-\item{folder}{To which subfolder the data is saved. If '.', save to current directory.}
 }
 \description{
 A simplified load function using readRDS().
+}
+\examples{
+ld(dt)
+ld(filename=dt, objname=dt_new, path='../Rdata')
 }

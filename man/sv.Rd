@@ -4,15 +4,21 @@
 \alias{sv}
 \title{A simplified save function using saveRDS().}
 \usage{
-sv(x, path = "../data", compress = T)
+sv(objname, filename = NULL, path = "./data", compress = T)
 }
 \arguments{
-\item{x}{The object to be saved}
+\item{objname}{expression or char. The object to be saved, use its R object name, e.g., sv(dt).}
+
+\item{filename}{expression or char. The file name of the serialized object. Default to objname, e.g., sv(dt, dt_new_name)}
+
+\item{path}{To which subfolder the data is saved. Default to '../data'. If './', save to current directory.}
 
 \item{compress}{Whether the object should be compressed}
-
-\item{folder.}{To which subfolder the data is saved. If '.', save to current directory.}
 }
 \description{
 A simplified save function using saveRDS().
+}
+\examples{
+sv(dt) # equals to sv('dt')
+sv(dt, dt_new_name, path='../Rdata')
 }
