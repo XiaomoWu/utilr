@@ -1,5 +1,9 @@
+# ignore files
 .vs
 .Rproj.user
 .Rhistory
 .RData
 .ipynb_checkpoints/
+build_package.R
+
+# ignore folders

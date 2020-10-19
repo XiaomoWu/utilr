@@ -3,7 +3,6 @@
 \docType{package}
 \name{utilr}
 \alias{utilr}
-\alias{utilr-package}
 \title{utilr: Yu Zhu's data processing routine.}
 \description{
 The utilr package provides data processing facilities on:
