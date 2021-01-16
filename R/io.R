@@ -70,8 +70,9 @@ sv <- function(obj, svname=NULL, svtype=NULL, path = "./data") {
         saveRDS(obj, file = svdir, compress=T) 
     }
 
+
     # print result
-    sprintf('"%s" saved as "%s.%s"', as.character(substitute(obj)), svname, svtype) %>% cat()
+    sprintf('"%s" saved as "%s.%s" (%s)', as.character(substitute(obj)), svname, svtype, neat_file_size(svdir)) %>% cat()
 
     end <- Sys.time()
     gap <- end - start
