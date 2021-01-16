@@ -7,16 +7,17 @@ Depends:
 	R (>= 4.0.0),
 	devtools,
 	roxygen2,
-	data.table,
 	ggplot2,
 	dplyr,
 	lubridate,
 	stringr,
 	pryr,
+	parallel,
 	plotly,
     arrow,
 	microbenchmark,
 	IRkernel
+	data.table,
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
