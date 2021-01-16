@@ -130,7 +130,7 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
     if (force==F & (exists(filename) | ifelse(length(ldname)==0, F, exists(ldname)))) {
         file_in_env = ifelse(length(ldname)==0, filename, sprintf('"%s" or "%s"', filename, ldname))
 
-        sprintf('"%s" (%s) already in .GlobalEnv, will NOT load again!', file_in_env, file_size) %>% cat()
+        sprintf('%s (%s) already in .GlobalEnv, will NOT load again!', file_in_env, file_size) %>% cat()
 
     # else, load the file
     } else {
@@ -151,7 +151,7 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
         # if ldname is NOT null, use ldname
         } else { 
             assign(ldname, val, env=.GlobalEnv)
-            sprintf('"%s" loaded as "%s"', filename_ext, ldname) %>% cat()
+            sprintf('"%s" (%s) loaded as "%s"', filename_ext, file_size, ldname) %>% cat()
         }
     }
         
