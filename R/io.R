@@ -111,7 +111,7 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
     # if only one exists, assign it to `lddir`
     hit = list.files(path, pattern=sprintf('^%s\\.(rds|feather)', filename))
     if (length(hit)==0) {
-        stop(sprint('%s.rds or %s.feather does NOT exists!', filename, filename))
+        stop(sprintf('%s.rds or %s.feather does NOT exists!', filename, filename))
     } else if (length(hit)==1) {
         lddir <- sprintf('%s/%s', path, hit)
         ldtype = str_split(hit, '\\.')[[1]] %>% tail(1)
