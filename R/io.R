@@ -15,6 +15,9 @@ neat_file_size <- function(file_path) {
     } else if (1024<bytes & bytes<=1024^2) {
         kbs = round(bytes/1024, 1)
         sprintf('%s KB', kbs)
+    } else {
+        bs = round(bytes, 1)
+        sprintf('%s B', bs)
     }
 }
 
@@ -130,7 +133,7 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
     if (force==F & (exists(filename) | ifelse(length(ldname)==0, F, exists(ldname)))) {
         file_in_env = ifelse(length(ldname)==0, filename, sprintf('"%s" or "%s"', filename, ldname))
 
-        sprintf('%s (%s) already in .GlobalEnv, will NOT load again!', file_in_env, file_size) %>% cat()
+        sprintf('%s (%s) already loaded, will NOT load again!', file_in_env, file_size) %>% cat()
 
     # else, load the file
     } else {
