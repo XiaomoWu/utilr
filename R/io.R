@@ -113,8 +113,11 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
     # if both exists, stop and ask for clarification;
     # if only one exists, assign it to `lddir`
     hit = list.files(path, pattern=sprintf('^%s\\.(rds|feather)', filename))
+    hit_extensions = sapply(str_split(hit, '\\.'), tail, 1) %>% 
+                     str_c(collapse=', ')
+
     if (length(hit)==0) {
-        stop(sprintf('%s.rds or %s.feather does NOT exists!', filename, filename))
+        stop(sprintf('Cannot find %s with extensions (%s)!', filename, hit_extensions))
     } else if (length(hit)==1) {
         lddir <- sprintf('%s/%s', path, hit)
         ldtype = str_split(hit, '\\.')[[1]] %>% tail(1)
@@ -123,7 +126,7 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
         lddir <- sprintf('%s/%s.%s', path, filename, ldtype)
         filename_ext = hit[str_detect(hit, sprintf('%s$', ldtype))]
     } else {
-        stop(sprintf('Both "%s.rds" and "%s.feather" are found, please clarify.', filename, filename))
+        stop(sprintf('Multiple extensions of "%s" found (%s), please clarify!', filename, hit_extensions))
     }
 
     # get file size before loading
