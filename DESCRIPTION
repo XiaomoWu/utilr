@@ -5,14 +5,15 @@ Authors@R: person("Yu", "Zhu", email = "ross.zhu@outlook.com", role = c("aut", "
 Description: My personal data processing helpers
 Depends: 
 	R (>= 4.0.0),
+	magrittr,
 	devtools,
 	roxygen2,
 	ggplot2,
 	dplyr,
+	jsonlite,
 	lubridate,
 	stringr,
 	pryr,
-	parallel,
 	plotly,
     arrow,
 	microbenchmark,

@@ -63,7 +63,6 @@ sv <- function(obj, svname=NULL, svtype=NULL, path = "./data") {
                 call.=F)
     }
 
-
     # Save with `write_feather` or `saveRDS`
     svdir = sprintf('%s/%s.%s', path, svname, svtype)
 
@@ -100,33 +99,37 @@ ld <- function(filename, ldname=NULL, ldtype=NULL, path = './data', force = F) {
     # check if ldtype is valid
     # possible value: NULL, "rds", "feather"
     if (!is.null(ldtype) && !(ldtype %in% c('rds', 'feather'))) {
-        stop('`ldtype` could only be "rds", "feather" or "NULL"')
+        stop('`ldtype` must be one of "rds", "feather" or "NULL"')
     }
 
     # convert filename/ldname to string
     filename = as.character(substitute(filename))
-
     ldname = as.character(substitute(ldname))
 
     # verify file type: rds or feather
     # if file doesn't exist, stop;
     # if both exists, stop and ask for clarification;
     # if only one exists, assign it to `lddir`
-    hit = list.files(path, pattern=sprintf('^%s\\.(rds|feather)', filename))
-    hit_extensions = sapply(str_split(hit, '\\.'), tail, 1) %>% 
+    if (is.null(ldtype)) {
+        hit = list.files(path, pattern=sprintf('^%s\\.(rds|feather)$', filename))
+    } else {
+        hit = list.files(path, pattern=sprintf('^%s\\.%s$', filename, substitute(ldtype)))
+    }
+    hit_extensions = sapply(str_split(hit, '\\.'), tail, 1)  %>% unique() %>% 
                      str_c(collapse=', ')
 
     if (length(hit)==0) {
-        stop(sprintf('Cannot find %s with extensions (%s)!', filename, hit_extensions))
+        if (is.null(ldtype)) {
+            stop(sprintf('Cannot find "%s" with possible extensions ("rds", "feather")', filename))
+        } else{
+            stop(sprintf('Cannot find "%s.%s"', filename, ldtype))
+        }
     } else if (length(hit)==1) {
         lddir <- sprintf('%s/%s', path, hit)
         ldtype = str_split(hit, '\\.')[[1]] %>% tail(1)
         filename_ext = hit
-    } else if (length(hit)==2 & !is.null(ldtype)) {
-        lddir <- sprintf('%s/%s.%s', path, filename, ldtype)
-        filename_ext = hit[str_detect(hit, sprintf('%s$', ldtype))]
     } else {
-        stop(sprintf('Multiple extensions of "%s" found (%s), please clarify!', filename, hit_extensions))
+        stop(sprintf('Multiple extensions (%s) of "%s" found, please clarify!', hit_extensions, filename))
     }
 
     # get file size before loading
